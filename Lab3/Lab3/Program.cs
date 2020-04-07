@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace Lab3
 {
@@ -96,6 +97,7 @@ namespace Lab3
 
                 ++m;
             }
+            List<Producto> shoppingCart = new List<Producto>();
             int C = 1;
             while (C == 1)
             {
@@ -261,7 +263,29 @@ namespace Lab3
                 }
                 else if (option == "8")
                 {
-
+                    Console.WriteLine("¿Qué producto desea agregar al carro?");
+                    string product = Console.ReadLine();
+                    Console.WriteLine("¿Cuántas unidades de este producto desea llevar?");
+                    string Number = Console.ReadLine();
+                    int number = Int32.Parse(Number);
+                    foreach(Producto prod in productList)
+                    {
+                        if (product == prod.Name())
+                        {
+                            if (prod.Stock() < number)
+                            {
+                                Console.WriteLine("Lo sentimos, no nos quedan las unidades solicitadas.");
+                                break;
+                            }
+                            else
+                            {
+                                prod.NewStock(number);
+                                Console.WriteLine("Se agregaron " + number + " unidades de " + product + " al carro con éxito.");
+                                Console.WriteLine("Quedan " + prod.Stock() + " unidades de " + product + " disponibles.");
+                                shoppingCart.Add(prod);
+                            }
+                        }
+                    }
                 }
                 else if (option == "9")
                 {
@@ -271,10 +295,14 @@ namespace Lab3
                     string cashier = Console.ReadLine();
                     foreach(Employee employee in employeeList)
                     {
-                        if(cashier== employee.FirstName() && "cajero" == employee.Workplace())
+                        foreach(Client c in clientList)
                         {
-                            
+                            if (cashier == employee.FirstName() && "cajero" == employee.Workplace() && person == c.FirstName())
+                            {
+                                c.Purchase(c.Income(), shoppingCart, employee);
+                            }
                         }
+                        
                     }
                 }
                 else if (option == "10")

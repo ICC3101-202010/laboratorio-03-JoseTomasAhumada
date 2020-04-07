@@ -35,5 +35,9 @@ namespace Lab3
         {
             return stock;
         }
+        public void NewStock(int requested)
+        {
+            stock = stock - requested;
+        }
     }
 }
