@@ -19,5 +19,21 @@ namespace Lab3
             this.brand = brand;
             this.stock = stock;
         }
+        public string Name()
+        {
+            return name;
+        }
+        public int Price()
+        {
+            return price;
+        }
+        public string Brand()
+        {
+            return brand;
+        }
+        public int Stock()
+        {
+            return stock;
+        }
     }
 }

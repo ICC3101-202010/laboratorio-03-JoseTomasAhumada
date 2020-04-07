@@ -17,7 +17,7 @@ namespace Lab3
         {
             this.income = income;
         }
-        public void Purchase(Client c, int income, int sumProduct)
+        public void Purchase(int income, int sumProduct, List<Producto> productList, Employee e)
         {
             if (sumProduct > income)
             {
@@ -26,11 +26,16 @@ namespace Lab3
             else
             {
                 int result = sumProduct - income;
-                c.setIncome(result);
+                setIncome(result);
                 Console.WriteLine("Compra realizada con éxito");
                 Console.WriteLine("");
                 Console.WriteLine("Detalles de la compra:");
-                Console.WriteLine("Nombre del cliente:" + c.firstName + " " + c.lastName);
+                Console.WriteLine("Nombre del cliente:" + " " + FirstName() + " " + LastName());
+                Console.WriteLine("Nombre del cajero:" + " " + e.FirstName() + " " + e.LastName());
+                foreach (Producto product in productList)
+                {
+                    Console.WriteLine(product.Name() + " " + product.Price());
+                }
                 Console.WriteLine("Monto de la compra:" + sumProduct);
                 Console.WriteLine("Nuevo ingreso:" + income);
             }

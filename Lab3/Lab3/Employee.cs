@@ -19,6 +19,22 @@ namespace Lab3
             this.startTime = startTime;
             this.endTime = endTime;
         }
+        public string Workplace()
+        {
+            return workplace;
+        }
+        public int Salary()
+        {
+            return salary;
+        }
+        public string StartTime()
+        {
+            return startTime;
+        }
+        public string EndTime()
+        {
+            return endTime;
+        }
         public void changeWorkplace(string workplace)
         {
             this.workplace = workplace;
@@ -32,6 +48,5 @@ namespace Lab3
             this.startTime = startTime;
             this.endTime = endTime;
         }
-
     }
 }
